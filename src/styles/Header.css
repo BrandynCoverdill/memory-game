@@ -1,0 +1,19 @@
+.header h1 {
+	text-align: center;
+}
+
+.header {
+	border-bottom: 3px solid black;
+}
+
+.header .scores {
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+	gap: 1em;
+}
+
+.header .font {
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+		'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

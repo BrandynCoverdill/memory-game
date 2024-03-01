@@ -1,0 +1,9 @@
+@font-face {
+	font-family: 'AdventureTime';
+	src: url('../assets/fonts/AdventureTimeFont.ttf');
+}
+
+body {
+	font-family: 'AdventureTime';
+	background-image: url('../assets/images/background.webp');
+}
