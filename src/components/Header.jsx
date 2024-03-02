@@ -7,18 +7,18 @@ export default function Header({ time, score, bestTime, bestScore }) {
 			<div className='scores'>
 				<div className='current-scores'>
 					<p>
-						Current Score <span className='font'>{score}</span>
+						Current Score<span className='font'>: {score}</span>
 					</p>
 					<p>
-						Current Time <span className='font'>{time}</span>
+						Current Time<span className='font'>: {time}</span>
 					</p>
 				</div>
 				<div className='best-scores'>
 					<p>
-						Best Score <span className='font'>{bestScore}</span>
+						Best Score<span className='font'>: {bestScore}</span>
 					</p>
 					<p>
-						Best Time <span className='font'>{bestTime}</span>
+						Best Time<span className='font'>: {bestTime}</span>
 					</p>
 				</div>
 			</div>
