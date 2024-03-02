@@ -1,5 +1,5 @@
 import '../styles/App.css';
-import { useState, useEffect } from 'react';
+import {useState, useEffect} from 'react';
 import Header from '../components/Header';
 import Board from '../components/Board';
 
@@ -127,12 +127,11 @@ function App() {
 		Promise.all(characters.map(fetchData))
 			.then((updatedCharacters) => {
 				setCharacters(updatedCharacters);
-				setIsLoading('loaded');
 			})
 			.catch((error) => {
 				console.error('Error: Could not fetch data for objects', error);
-				setIsLoading('error');
 			});
+		setIsLoading(false);
 	}, []);
 
 	return (
@@ -143,11 +142,7 @@ function App() {
 				bestTime={bestTime}
 				bestScore={bestScore}
 			/>
-			{isLoading === true ? (
-				<p>Loading...</p>
-			) : (
-				<Board characters={characters} />
-			)}
+			{isLoading ? <p>Loading...</p> : <Board characters={characters} />}
 		</>
 	);
 }
