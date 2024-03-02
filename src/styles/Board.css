@@ -1,0 +1,7 @@
+.board {
+	display: grid;
+	justify-content: center;
+	gap: 1em;
+	margin: 1em;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}

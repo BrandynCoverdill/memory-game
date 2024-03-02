@@ -1,4 +1,5 @@
 import Card from '../components/Card';
+import '../styles/Board.css';
 
 export default function Board({ characters }) {
 	return (
@@ -7,6 +8,7 @@ export default function Board({ characters }) {
 				<Card
 					characterName={character.name}
 					characterImage={character.imageUrl}
+					key={character.searchName}
 				/>
 			))}
 		</div>
