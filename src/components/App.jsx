@@ -2,6 +2,7 @@ import '../styles/App.css';
 import { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Board from '../components/Board';
+import Outcome from '../components/Outcome';
 
 function App() {
 	// This is a free api key - dont have knowledge of putting this in the server-side yet.
@@ -12,7 +13,7 @@ function App() {
 	const [score, setScore] = useState(0);
 	const [bestTime, setBestTime] = useState(0);
 	const [bestScore, setBestScore] = useState(0);
-	const [isLoading, setIsLoading] = useState('loading');
+	const [gameStatus, setGameStatus] = useState('loading');
 	const [characters, setCharacters] = useState([
 		{
 			id: 1,
@@ -124,6 +125,7 @@ function App() {
 				};
 			} catch (error) {
 				console.error('Error: Failed to fetch data', error);
+				setGameStatus('error');
 				return character;
 			}
 		};
@@ -135,8 +137,11 @@ function App() {
 			})
 			.catch((error) => {
 				console.error('Error: Could not fetch data for objects', error);
+				setGameStatus('error');
 			});
-		setIsLoading(false);
+		if (gameStatus !== 'error') {
+			setGameStatus('start');
+		}
 	}, []);
 
 	return (
@@ -147,7 +152,31 @@ function App() {
 				bestTime={bestTime}
 				bestScore={bestScore}
 			/>
-			{isLoading ? <p>Loading...</p> : <Board characters={characters} />}
+			{gameStatus === 'loading' ? (
+				<p>Loading...</p>
+			) : gameStatus === 'error' ? (
+				<p>Error fetching data...</p>
+			) : gameStatus === 'start' ? (
+				<Board characters={characters} />
+			) : gameStatus === 'lost' ? (
+				<Outcome
+					time={time}
+					score={score}
+					bestTime={bestTime}
+					bestScore={bestScore}
+					gameStatus={gameStatus}
+				/>
+			) : gameStatus === 'won' ? (
+				<Outcome
+					time={time}
+					score={score}
+					bestTime={bestTime}
+					bestScore={bestScore}
+					gameStatus={gameStatus}
+				/>
+			) : (
+				<></>
+			)}
 		</>
 	);
 }
