@@ -1,5 +1,5 @@
 import '../styles/App.css';
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import Header from '../components/Header';
 import Board from '../components/Board';
 
@@ -88,31 +88,36 @@ function App() {
 		},
 	]);
 
-	// TODO: Change the json loaded for some images to the ones below
-	// 			if (character.name === 'Marceline the Vampire Queen') {
-	// 				character.imageUrl = json.data[2].images.original.url;
-	// 			} else if (character.name === 'Ice King') {
-	// 				character.imageUrl = json.data[3].images.original.url;
-	// 			} else if (character.name === 'Simon Petrikov') {
-	// 				character.imageUrl = json.data[4].images.original.url;
-	// 			} else if (character.name === 'Flame Princess') {
-	// 				character.imageUrl = json.data[6].images.original.url;
-	// 			} else if (character.name === 'Princess Bubblegum') {
-	// 				character.imageUrl = json.data[9].images.original.url;
-	// 			} else if (character.name === 'BMO') {
-	// 				character.imageUrl = json.data[5].images.original.url;
-	// 			} else {
-	// 				character.imageUrl = json.data[0].images.original.url;
-	// 			}
-
 	useEffect(() => {
 		// function to fetch data for each object in the characters array
 		const fetchData = async (character) => {
 			try {
 				const response = await fetch(apiUrl + `&q=${character.searchName}`);
 				const data = await response.json();
+				let url = '';
 				// Get the url data for the character based on the fetched data
-				const url = data.data[0].images.original.url;
+				if (character.id === 6) {
+					// marceline
+					url = data.data[2].images.original.url;
+				} else if (character.id === 4) {
+					// ice king
+					url = data.data[3].images.original.url;
+				} else if (character.id === 10) {
+					// simon
+					url = data.data[4].images.original.url;
+				} else if (character.id === 9) {
+					// flame princess
+					url = data.data[6].images.original.url;
+				} else if (character.id === 5) {
+					// bubblegum
+					url = data.data[9].images.original.url;
+				} else if (character.id === 1) {
+					// bmo
+					url = data.data[5].images.original.url;
+				} else {
+					// other characters
+					url = data.data[0].images.original.url;
+				}
 				return {
 					...character,
 					imageUrl: url,
