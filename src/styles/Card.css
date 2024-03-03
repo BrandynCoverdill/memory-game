@@ -1,9 +1,10 @@
 .card {
 	max-width: 30em;
 	padding-bottom: 1em;
-	border: 10px solid #59a694;
+	border: 10px solid #029ac3;
 	border-radius: 10px;
 	cursor: pointer;
+	background-color: #59a694;
 }
 
 .card .image {
@@ -11,7 +12,7 @@
 	margin: auto;
 	display: flex;
 	margin-bottom: 1em;
-	border-bottom: 10px solid #59a694;
+	border-bottom: 10px solid #029ac3;
 }
 
 .card .image img {
