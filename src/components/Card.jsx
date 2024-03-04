@@ -1,8 +1,8 @@
 import '../styles/Card.css';
 
-export default function Card({ characterName, characterImage }) {
+export default function Card({ characterName, characterImage, shuffle }) {
 	return (
-		<div className='card'>
+		<div className='card' onClick={shuffle}>
 			<div className='image'>
 				<img src={characterImage} alt={characterName} />
 			</div>

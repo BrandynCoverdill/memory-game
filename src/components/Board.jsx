@@ -40,6 +40,7 @@ export default function Board({ characters }) {
 					characterName={character.name}
 					characterImage={character.imageUrl}
 					key={character.searchName}
+					shuffle={shuffle}
 				/>
 			))}
 		</div>
