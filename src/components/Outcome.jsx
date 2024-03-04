@@ -6,6 +6,7 @@ export default function Outcome({
 	bestTime,
 	bestScore,
 	gameStatus,
+	resetGame,
 }) {
 	switch (gameStatus) {
 		case 'won':
@@ -27,6 +28,9 @@ export default function Outcome({
 					<p>
 						Best Score<span className='font'>: {bestScore}</span>
 					</p>
+					<button type='button' onClick={resetGame}>
+						Play again
+					</button>
 				</section>
 			);
 			break;
@@ -50,6 +54,9 @@ export default function Outcome({
 					<p>
 						Best Score<span className='font'>: {bestScore}</span>
 					</p>
+					<button type='button' onClick={resetGame}>
+						Play again
+					</button>
 				</section>
 			);
 			break;

@@ -164,6 +164,13 @@ function App() {
 		setGameStatus('lost');
 	}
 
+	// Resets the game if the player wants to play again
+	function handleResetGame() {
+		setTime(0);
+		setScore(0);
+		setGameStatus('start');
+	}
+
 	return (
 		<>
 			<Header
@@ -189,6 +196,7 @@ function App() {
 					bestTime={bestTime}
 					bestScore={bestScore}
 					gameStatus={gameStatus}
+					resetGame={handleResetGame}
 				/>
 			) : gameStatus === 'won' ? (
 				<Outcome
@@ -197,6 +205,7 @@ function App() {
 					bestTime={bestTime}
 					bestScore={bestScore}
 					gameStatus={gameStatus}
+					resetGame={handleResetGame}
 				/>
 			) : (
 				<></>
