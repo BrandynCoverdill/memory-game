@@ -9,9 +9,7 @@ function App() {
 	const apiKey = 'Pes8vjYEC0IqBz7wMJ7TB3mg7u4hwlju';
 	const apiUrl = `https://api.giphy.com/v1/gifs/search?api_key=${apiKey}&limit=10`;
 
-	const [time, setTime] = useState(0);
 	const [score, setScore] = useState(0);
-	const [bestTime, setBestTime] = useState(0);
 	const [bestScore, setBestScore] = useState(0);
 	const [gameStatus, setGameStatus] = useState('loading');
 	const [characters, setCharacters] = useState([
@@ -166,19 +164,13 @@ function App() {
 
 	// Resets the game if the player wants to play again
 	function handleResetGame() {
-		setTime(0);
 		setScore(0);
 		setGameStatus('start');
 	}
 
 	return (
 		<>
-			<Header
-				time={time}
-				score={score}
-				bestTime={bestTime}
-				bestScore={bestScore}
-			/>
+			<Header score={score} bestScore={bestScore} />
 			{gameStatus === 'loading' ? (
 				<p>Loading...</p>
 			) : gameStatus === 'error' ? (
@@ -191,18 +183,14 @@ function App() {
 				/>
 			) : gameStatus === 'lost' ? (
 				<Outcome
-					time={time}
 					score={score}
-					bestTime={bestTime}
 					bestScore={bestScore}
 					gameStatus={gameStatus}
 					resetGame={handleResetGame}
 				/>
 			) : gameStatus === 'won' ? (
 				<Outcome
-					time={time}
 					score={score}
-					bestTime={bestTime}
 					bestScore={bestScore}
 					gameStatus={gameStatus}
 					resetGame={handleResetGame}

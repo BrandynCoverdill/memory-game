@@ -1,13 +1,6 @@
 import '../styles/Outcome.css';
 
-export default function Outcome({
-	time,
-	score,
-	bestTime,
-	bestScore,
-	gameStatus,
-	resetGame,
-}) {
+export default function Outcome({ score, bestScore, gameStatus, resetGame }) {
 	switch (gameStatus) {
 		case 'won':
 			return (
@@ -17,13 +10,7 @@ export default function Outcome({
 					</h2>
 					<p>Your statistics</p>
 					<p>
-						Time<span className='font'>: {time}</span>
-					</p>
-					<p>
 						Score<span className='font'>: {score}</span>
-					</p>
-					<p>
-						Best Time<span className='font'>: {bestTime}</span>
 					</p>
 					<p>
 						Best Score<span className='font'>: {bestScore}</span>
@@ -43,13 +30,7 @@ export default function Outcome({
 					</h2>
 					<p>Your statistics</p>
 					<p>
-						Time<span className='font'>: {time}</span>
-					</p>
-					<p>
 						Score<span className='font'>: {score}</span>
-					</p>
-					<p>
-						Best Time<span className='font'>: {bestTime}</span>
 					</p>
 					<p>
 						Best Score<span className='font'>: {bestScore}</span>
