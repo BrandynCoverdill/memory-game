@@ -1,59 +1,41 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Card from '../components/Card';
 import '../styles/Board.css';
 
 export default function Board({ characters }) {
-	// randomize the order of the characters
-	function randomizeCharacterOrder() {
-		// get a copy of the character array
-		const mixedCharacters = [];
+	// Copy of the characters as a state to shuffle
+	const [shuffledCharacters, setShuffledCharacters] = useState([]);
 
-		characters.map((char) => {
-			mixedCharacters.push(char);
+	// shuffle the order of characters
+	function shuffle() {
+		// create copy of character array to shuffle
+		let tempArr = characters.map((char) => {
+			return char;
 		});
-		console.log(mixedCharacters);
-	}
 
-	const array1 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-	function returnRandomOrder(arr) {
-		// get copy of array passed in
-		let copyArr = arr;
-		// get the length of the array
-		let length = copyArr.length;
-		// create a blank array
-		let newArr = [];
-		// define a random index variable
-		let randomIndex = 0;
-		// while the length of the copy array is greater than zero
-		let a = true;
-		while (a) {
-			// grab a random number as the index
-			randomIndex = Math.floor(Math.random() * length);
-			// push the random index'd value of the copied array to the new array
-			newArr.push(copyArr[randomIndex]);
-			// filter out that value from the copied array
-			copyArr = copyArr.filter((item) => {
-				return randomIndex !== copyArr.indexOf(item[randomIndex]);
-			});
-			// save that filted array as the copy array
-			copyArr = updatedCopyArray;
-			console.log('Updated Array: ' + copyArr);
-			console.log('Generated array: ' + newArr);
-			a = false;
+		// Fisher-Yates shuffle algorithm on tempArr
+		for (let i = tempArr.length - 1; i > 0; i--) {
+			let j = Math.floor(Math.random() * (i + 1));
+			[tempArr[i], tempArr[j]] = [tempArr[j], tempArr[i]];
 		}
 
-		return newArr;
+		// set the shuffled character state array to temp arr
+		setShuffledCharacters(tempArr);
+
+		return shuffledCharacters;
 	}
 
+	// On mount, shuffle the characters
 	useEffect(() => {
-		// randomizeCharacterOrder();
-		console.log(returnRandomOrder(array1));
-	}, []);
+		if (characters[characters.length - 1].imageUrl !== '') {
+			setShuffledCharacters([]);
+			console.log(shuffle());
+		}
+	}, [characters]);
 
 	return (
 		<div className='board'>
-			{characters.map((character) => (
+			{shuffledCharacters.map((character) => (
 				<Card
 					characterName={character.name}
 					characterImage={character.imageUrl}
