@@ -144,6 +144,26 @@ function App() {
 		}
 	}, []);
 
+	// update the scores on card clicked
+	function handleUpdateScores() {
+		// if the score is equal to the best score, update both
+		if (score === bestScore) {
+			setScore((score) => score + 1);
+			setBestScore((bestScore) => bestScore + 1);
+		} else {
+			// if the score is less than best score, update only current score
+			setScore((score) => score + 1);
+		}
+		if (score >= 11) {
+			setGameStatus('won');
+		}
+	}
+
+	// Fires when the player loses the game
+	function handleLoseGame() {
+		setGameStatus('lost');
+	}
+
 	return (
 		<>
 			<Header
@@ -157,7 +177,11 @@ function App() {
 			) : gameStatus === 'error' ? (
 				<p>Error fetching data...</p>
 			) : gameStatus === 'start' ? (
-				<Board characters={characters} />
+				<Board
+					characters={characters}
+					updateScore={handleUpdateScores}
+					loseGame={handleLoseGame}
+				/>
 			) : gameStatus === 'lost' ? (
 				<Outcome
 					time={time}

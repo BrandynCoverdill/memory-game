@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Card from '../components/Card';
 import '../styles/Board.css';
 
-export default function Board({ characters }) {
+export default function Board({ characters, updateScore, loseGame }) {
 	// Copy of the characters as a state to shuffle
 	const [shuffledCharacters, setShuffledCharacters] = useState([]);
 
@@ -29,7 +29,7 @@ export default function Board({ characters }) {
 	useEffect(() => {
 		if (characters[characters.length - 1].imageUrl !== '') {
 			setShuffledCharacters([]);
-			console.log(shuffle());
+			shuffle();
 		}
 	}, [characters]);
 
@@ -41,6 +41,8 @@ export default function Board({ characters }) {
 					characterImage={character.imageUrl}
 					key={character.searchName}
 					shuffle={shuffle}
+					updateScore={updateScore}
+					loseGame={loseGame}
 				/>
 			))}
 		</div>
