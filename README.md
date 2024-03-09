@@ -1,8 +1,7 @@
-# React + Vite
+# Adventure Time Memory Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## How to play
+Click on a different character each time, and if you click on the same character twice, game over!
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Live Site
+You can view the live site [here](https://adventure-time-memory-game.netlify.app).
